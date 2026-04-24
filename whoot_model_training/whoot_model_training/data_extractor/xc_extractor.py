@@ -73,7 +73,7 @@ def convert_audio_to_flac(row, error_path="bad_files", col="audio"):
     try:
         wav_audio = AudioSegment.from_file(file_path)
         wav_audio.export(flac_path, format="flac")
-    except IOError as e:
+    except Exception as e:
         if os.path.exists(file_path):
             os.makedirs(error_path, exist_ok=True)
             shutil.move(file_path, error_path)
@@ -135,7 +135,8 @@ def xc_extractor(
         dataset["en"],
         new_fingerprint="labels"
     )
-    dataset = dataset.class_encode_column("labels")
+    print(dataset)
+    # dataset = dataset.class_encode_column("labels")
     dataset = convert_labeled_dataset_onehot(dataset)
 
     dataset = dataset.add_column(

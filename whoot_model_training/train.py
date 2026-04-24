@@ -63,10 +63,18 @@ def train(config):
         config (dict): the config used for training. Defined in yaml file
     """
     # Extract the dataset
-    ds = buowset_extractor(
-        metadata_csv=config["metadata_csv"],
-        parent_path=config["data_path"],
-        output_path=config["hf_cache_path"],
+    # ds = buowset_extractor(
+    #     metadata_csv=config["metadata_csv"],
+    #     parent_path=config["data_path"],
+    #     output_path=config["hf_cache_path"],
+    # )
+
+    ds = xc_extractor(
+        "/home/s.perry.543/whoot/data/san_diego_xc_2026/meta/xc_meta_aux.json",
+        "/home/s.perry.543/whoot/data/san_diego_xc_2026/audio",
+        # cache_path="data/san_diego_xc_aux/cache",
+        # params: XCParams = XCParams(),
+        # bad_file_path="data/xc_bad_file"
     )
 
     # csv_path = "/home/sean/whoot/data/san_diego_xc_aux/xc_meta_aux.json"
@@ -179,8 +187,8 @@ def init_env(config: dict):
     os.environ["COMET_PROJECT_NAME"] = config["COMET_PROJECT_NAME"]
     os.environ["CUDA_VISIBLE_DEVICES"] = config["CUDA_VISIBLE_DEVICES"]
     check_for_comet = config["COMET_WORKSPACE"] is not None
-    assert check_for_comet, "Make sure to add a COMET_WORKSPACE to config"
-    os.environ["COMET_WORKSPACE"] = config["COMET_WORKSPACE"]
+    # assert check_for_comet, "Make sure to add a COMET_WORKSPACE to config"
+    # os.environ["COMET_WORKSPACE"] = config["COMET_WORKSPACE"]
 
 
 if __name__ == "__main__":
