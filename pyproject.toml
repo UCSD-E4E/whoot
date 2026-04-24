@@ -36,6 +36,8 @@ cpu = [
 ]
 cu128 = [
   "torch>=2.7.0",
+  "torchaudio>=2.8.0",
+  "torchvision>=0.22.0",
 ]
 model-training = [
   "datasets>=3.5.1,<4.0.0",
