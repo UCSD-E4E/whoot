@@ -5,6 +5,7 @@ description = "Tools for capturing, analyzing, and parsing audio data"
 readme = "README.md"
 requires-python = ">= 3.10.0, < 3.13.0"
 dependencies = [
+    "av>=17.0.1",
     "librosa>=0.10.2.post1",
     "numba==0.61.0",
     "nvitop>=1.5.3",
@@ -32,12 +33,12 @@ version = {attr = "whoot.__version__"}
 cpu = [
   "torch>=2.7.0",
   "torchaudio>=2.8.0",
-  "torchvision>=0.22.0",
+  "torchvision<=0.25.0",
 ]
 cu128 = [
   "torch>=2.7.0",
   "torchaudio>=2.8.0",
-  "torchvision>=0.22.0",
+  "torchvision<=0.25.0",
 ]
 model-training = [
   "datasets>=3.5.1,<4.0.0",
